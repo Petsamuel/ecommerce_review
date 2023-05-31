@@ -1,9 +1,11 @@
 import { Fragment } from "react";
+import { Button, CounterButton } from "../components/Button";
 import product from "../assets/image-product-1.jpg";
 import Product_thubnail from "../assets/image-product-1-thumbnail.jpg";
 import Product_thubnail2 from "../assets/image-product-2-thumbnail.jpg";
 import Product_thubnail3 from "../assets/image-product-3-thumbnail.jpg";
 import Product_thubnail4 from "../assets/image-product-4-thumbnail.jpg";
+import Icon_cart from "../assets/icon-cart.svg";
 
 export default function Home() {
   const Products = [
@@ -55,6 +57,10 @@ export default function Home() {
                 </span>
               </p>
               <p className="">$250.00</p>
+              <div className="mt-6 flex gap-x-2 justify-center items-center">
+                <CounterButton value={4} />
+                <Button text="Add to Cart" icon={Icon_cart} />
+              </div>
             </div>
           </div>
         </div>
