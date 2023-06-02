@@ -17,10 +17,10 @@ export default function Home() {
   console.log(Products);
   return (
     <Fragment>
-      <section className="flex justify-center  py-[10rem]  gap-24">
-        <div className="w-[30%] relative">
+      <section className="flex justify-center  py-[10rem]  gap-24 lg:flex-row flex-col lg:mx-0 mx-4">
+        <div className=" w-full lg:w-[30%] relative ">
           <img src={product} alt="product" className=" rounded-2xl " />
-          <div className="grid grid-cols-4 gap-3  py-6 ">
+          <div className="lg:grid grid-cols-4 gap-3  py-6 hidden">
             {Products.map((value, key) => {
               return (
                 <img
@@ -33,7 +33,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className="w-[30%]">
+        <div className="lg:w-[30%]  ">
           <div className="mt-6">
             <p className="uppercase font-semibold text-amber-600 leading-loose">
               Sneaker Company

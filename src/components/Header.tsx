@@ -14,10 +14,12 @@ export default function Header() {
             <img src={logo} alt="logo" className="mr-2" />
             {Menu.map((value: string | null, key: number | null) => (
               <div
-                className="flex gap-5 ml-8 py-6 hover:border-amber-600 hover:border-b-2 cursor-pointer items-center"
+                className="bg-white h-[100%] lg:h-auto left-0 absolute lg:relative lg:flex gap-5 ml-8 py-6 hover:border-amber-600 hover:border-b-2 cursor-pointer items-center"
                 key={key}
               >
-                {value}
+                <a href="# " className="my-6 lg:my-auto py-5">
+                  {value}
+                </a>
               </div>
             ))}
           </div>
