@@ -9,15 +9,15 @@ export default function Header() {
   return (
     <Fragment>
       <header className="flex justify-around items-center pt-8 fixed w-full z-[50] bg-white">
-        <nav className="flex justify-between items-center border-b-2 w-full mx-24 relative ">
+        <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative ">
           <div className="flex relative items-center ">
             <img src={logo} alt="logo" className="mr-2" />
             {Menu.map((value: string | null, key: number | null) => (
               <div
-                className="bg-white h-[100%] lg:h-auto left-0 absolute lg:relative lg:flex gap-5 ml-8 py-6 hover:border-amber-600 hover:border-b-2 cursor-pointer items-center"
+                className="bg-white h-screen w-[100%] lg:w-auto lg:h-auto lg:left-0 -left-8 top-0 absolute lg:relative lg:flex gap-5 ml-8 py-6 hover:border-amber-600 hover:border-b-2 cursor-pointer items-center"
                 key={key}
               >
-                <a href="# " className="my-6 lg:my-auto py-5">
+                <a href="# " className="lg:my-auto z-20 ">
                   {value}
                 </a>
               </div>
