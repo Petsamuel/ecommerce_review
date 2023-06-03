@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import logo from "../assets/logo.svg";
 import cart from "../assets/icon-cart.svg";
 import image from "../assets/image-avatar.png";
+import close from "../assets/icon-close.svg";
 
 export default function Header() {
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
@@ -9,22 +10,25 @@ export default function Header() {
   return (
     <Fragment>
       <header className="flex justify-around items-center pt-8 fixed w-full z-[50] bg-white">
-        <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative ">
+        <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative pb-6">
           <div className="flex relative items-center ">
             <img src={logo} alt="logo" className="mr-2" />
-            {Menu.map((value: string | null, key: number | null) => (
-              <div
-                className="bg-white h-screen w-[100%] lg:w-auto lg:h-auto lg:left-0 -left-8 top-0 absolute lg:relative lg:flex gap-5 ml-8 py-6 hover:border-amber-600 hover:border-b-2 cursor-pointer items-center"
-                key={key}
-              >
-                <a href="# " className="lg:my-auto z-20 ">
-                  {value}
-                </a>
-              </div>
-            ))}
+            <ul className="bg-white h-screen w-[100%] lg:w-auto lg:h-auto lg:left-0 -left-8 top-0 absolute lg:relative lg:flex gap-5 ml-8  items-center">
+              <div></div>
+              {Menu.map((value: string | null, key: number | null) => (
+                <li
+                  className="lg:my-auto z-20 lg:py-6 px-0 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400"
+                  key={key}
+                >
+                  <a href="#" className="">
+                    {value}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="flex gap-8  items-center">
+          <div className="flex lg:gap-8 gap-2 items-center">
             <div className="">
               <img src={cart} alt="cart" className="cursor-pointer" />
             </div>

@@ -57,7 +57,7 @@ export default function Home() {
                 </span>
               </p>
               <p className="">$250.00</p>
-              <div className="mt-6 flex gap-x-2 justify-center items-center">
+              <div className="mt-6 lg:flex gap-x-2 justify-center items-center">
                 <CounterButton value={4} />
                 <Button text="Add to Cart" icon={Icon_cart} />
               </div>
