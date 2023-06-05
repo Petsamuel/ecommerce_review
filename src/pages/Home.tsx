@@ -14,7 +14,6 @@ export default function Home() {
     Product_thubnail3,
     Product_thubnail4,
   ];
-  console.log(Products);
   return (
     <Fragment>
       <section className="flex justify-center  py-[10rem]  gap-24 lg:flex-row flex-col lg:mx-0 mx-4">
@@ -58,7 +57,7 @@ export default function Home() {
               </p>
               <p className="">$250.00</p>
               <div className="mt-6 lg:flex gap-x-2 justify-center items-center">
-                <CounterButton value={4} />
+                <CounterButton />
                 <Button text="Add to Cart" icon={Icon_cart} />
               </div>
             </div>
