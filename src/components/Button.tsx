@@ -7,7 +7,8 @@ type Buttons = {
   icon: string;
 };
 type Counter = {
-  value: number;
+  // value: number;
+  countVal: (e: any) => void;
 };
 export const Button = ({ text, icon }: Buttons) => {
   return (
@@ -19,15 +20,16 @@ export const Button = ({ text, icon }: Buttons) => {
   );
 };
 
-export const CounterButton = () => {
-  const [productNum, setProductNum] = useState(0);
-
+export const CounterButton = ({ countVal }: Counter) => {
+  const [productNum, setProductNum] = useState(1);
+  countVal(productNum);
+  
   return (
     <Fragment>
       <div className="bg-gray-200 flex justify-around items-center w-3/6 py-3 m-2 rounded-lg">
         <img
           src={icon_minus}
-          alt="add"
+          alt="sub"
           className="cursor-pointer"
           onClick={() => {
             productNum == 0 ? setProductNum(0) : setProductNum(productNum - 1);
@@ -36,12 +38,10 @@ export const CounterButton = () => {
         {productNum}
         <img
           src={icon_plus}
-          alt="sub"
+          alt="add"
           className="cursor-pointer"
           onClick={() => {
-            productNum < 0
-              ? setProductNum(productNum + 1)
-              : setProductNum(productNum + 1);
+            productNum ? setProductNum(productNum + 1) : "";
           }}
         />
       </div>

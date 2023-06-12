@@ -1,29 +1,27 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Button, CounterButton } from "../components/Button";
+import { Cart } from "../components/Cart";
 import product from "../assets/image-product-1.jpg";
-import Product_thubnail from "../assets/image-product-1-thumbnail.jpg";
-import Product_thubnail2 from "../assets/image-product-2-thumbnail.jpg";
-import Product_thubnail3 from "../assets/image-product-3-thumbnail.jpg";
-import Product_thubnail4 from "../assets/image-product-4-thumbnail.jpg";
 import Icon_cart from "../assets/icon-cart.svg";
+import { Product } from "../components/static/data";
 
 export default function Home() {
-  const Products = [
-    Product_thubnail,
-    Product_thubnail2,
-    Product_thubnail3,
-    Product_thubnail4,
-  ];
+  const [value, setValue] = useState<number>(1);
+  const countVal = (e: any) => {
+    setValue(e);
+  };
+  console.log(value);
+
   return (
     <Fragment>
-      <section className="flex justify-center  py-[10rem]  gap-24 lg:flex-row flex-col lg:mx-0 mx-4">
+      <section className="relative flex justify-center  py-[10rem]  gap-24 lg:flex-row flex-col lg:mx-0 mx-4">
         <div className=" w-full lg:w-[30%] relative ">
           <img src={product} alt="product" className=" rounded-2xl " />
           <div className="lg:grid grid-cols-4 gap-3  py-6 hidden">
-            {Products.map((value, key) => {
+            {Product.map((value, key) => {
               return (
                 <img
-                  src={value}
+                  src={value.image}
                   alt="more-product"
                   className="rounded-xl  cursor-pointer hover:border-amber-600 hover:bg-opacity-50"
                   key={key}
@@ -57,11 +55,18 @@ export default function Home() {
               </p>
               <p className="">$250.00</p>
               <div className="mt-6 lg:flex gap-x-2 justify-center items-center">
-                <CounterButton />
+                <CounterButton
+                  countVal={() => {
+                    countVal(1);
+                  }}
+                />
                 <Button text="Add to Cart" icon={Icon_cart} />
               </div>
             </div>
           </div>
+        </div>
+        <div className="absolute right-24 top-32">
+          <Cart active={false} counter={value} />
         </div>
       </section>
     </Fragment>

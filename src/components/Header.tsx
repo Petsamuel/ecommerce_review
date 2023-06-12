@@ -1,11 +1,12 @@
 import { Fragment, useState } from "react";
 import logo from "../assets/logo.svg";
-import cart from "../assets/icon-cart.svg";
+import Cart from "../assets/icon-cart.svg";
 import image from "../assets/image-avatar.png";
 import close from "../assets/icon-close.svg";
 
 export default function Header() {
   const [active, setIsActive] = useState<boolean>(true);
+  const [CartMenu, setCartMenu] = useState(false);
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
 
   return (
@@ -35,7 +36,7 @@ export default function Header() {
 
           <div className="flex lg:gap-8 gap-2 items-center">
             <div className="">
-              <img src={cart} alt="cart" className="cursor-pointer" />
+              <img src={Cart} alt="cart" className="cursor-pointer" />
             </div>
             <div className="">
               <img
