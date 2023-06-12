@@ -1,12 +1,11 @@
 import { Fragment, useState } from "react";
 import { Button, CounterButton } from "../components/Button";
 import { Cart } from "../components/Cart";
-import product from "../assets/image-product-1.jpg";
 import Icon_cart from "../assets/icon-cart.svg";
 import { Product } from "../components/static/data";
 
 export default function Home() {
-  const [value, setValue] = useState<number>(1);
+  const [value, setValue] = useState<number>(6);
   const countVal = (e: any) => {
     setValue(e);
   };
@@ -16,7 +15,8 @@ export default function Home() {
     <Fragment>
       <section className="relative flex justify-center  py-[10rem]  gap-24 lg:flex-row flex-col lg:mx-0 mx-4">
         <div className=" w-full lg:w-[30%] relative ">
-          <img src={product} alt="product" className=" rounded-2xl " />
+          <img src={Product[0].image} alt="product" className=" rounded-2xl " />
+
           <div className="lg:grid grid-cols-4 gap-3  py-6 hidden">
             {Product.map((value, key) => {
               return (
@@ -57,7 +57,7 @@ export default function Home() {
               <div className="mt-6 lg:flex gap-x-2 justify-center items-center">
                 <CounterButton
                   countVal={() => {
-                    countVal(1);
+                    countVal;
                   }}
                 />
                 <Button text="Add to Cart" icon={Icon_cart} />

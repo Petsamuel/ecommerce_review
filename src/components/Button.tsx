@@ -23,7 +23,7 @@ export const Button = ({ text, icon }: Buttons) => {
 export const CounterButton = ({ countVal }: Counter) => {
   const [productNum, setProductNum] = useState(1);
   countVal(productNum);
-  
+
   return (
     <Fragment>
       <div className="bg-gray-200 flex justify-around items-center w-3/6 py-3 m-2 rounded-lg">
