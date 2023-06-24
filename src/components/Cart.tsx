@@ -4,12 +4,11 @@ import deleteicon from "../assets/icon-delete.svg";
 import { Product } from "./static/data";
 import { useGlobalState } from "./custom/hooks";
 
-type CartOption = {
-  active: boolean;
-};
 
-export const Cart = ({ active }: CartOption) => {
+export const Cart = () => {
   const [counter] = useGlobalState("cart");
+
+
   const Calculation = () => {
     const val = 125.0;
     const answer = val * counter.counter;
@@ -24,7 +23,7 @@ export const Cart = ({ active }: CartOption) => {
           </p>
         </div>
         <div className="flex justify-center h-full items-center">
-          {active ? (
+          {counter.isEmpty ? (
             <p className="text-gray-400 text-sm">Your Cart is empty.</p>
           ) : (
             <div className="flex px-2 gap-4 flex-col my-4">

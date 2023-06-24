@@ -7,6 +7,7 @@ type Buttons = {
   text: string;
   icon: string;
 };
+
 export const Button = ({ text, icon }: Buttons) => {
   return (
     <Fragment>
@@ -20,6 +21,38 @@ export const Button = ({ text, icon }: Buttons) => {
 export const CounterButton = () => {
   const [productNum, setProductNum] = useGlobalState("cart");
 
+  const sub_from_cart = () => {
+    switch (true) {
+      case productNum.counter != 0:
+        setProductNum({
+          ...productNum,
+          counter: productNum.counter - 1,
+          cartToggle: false,
+        });
+        break;
+      default:
+        productNum.counter;
+        setProductNum({ ...productNum, isEmpty: true });
+        break;
+    }
+  };
+  const add_to_cart = () => {
+    switch (true) {
+      case productNum.counter >= 0:
+        setProductNum({
+          ...productNum,
+          counter: productNum.counter + 1,
+          isEmpty: false,
+          cartToggle: false,
+        });
+        break;
+      default:
+        productNum.counter;
+
+        break;
+    }
+  };
+
   return (
     <Fragment>
       <div className="bg-gray-200 flex justify-around items-center w-3/6 py-3 m-2 rounded-lg">
@@ -27,18 +60,14 @@ export const CounterButton = () => {
           src={icon_minus}
           alt="sub"
           className="cursor-pointer"
-          onClick={() => {
-            setProductNum({ ...productNum, counter: productNum.counter - 1 });
-          }}
+          onClick={sub_from_cart}
         />
         {productNum.counter}
         <img
           src={icon_plus}
           alt="add"
           className="cursor-pointer"
-          onClick={() => {
-            setProductNum({ ...productNum, counter: productNum.counter + 1 });
-          }}
+          onClick={add_to_cart}
         />
       </div>
     </Fragment>

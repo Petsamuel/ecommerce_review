@@ -3,10 +3,11 @@ import logo from "../assets/logo.svg";
 import Cart from "../assets/icon-cart.svg";
 import image from "../assets/image-avatar.png";
 import close from "../assets/icon-close.svg";
+import { useGlobalState } from "./custom/hooks";
 
 export default function Header() {
-  const [active, setIsActive] = useState<boolean>(true);
-  const [CartMenu, setCartMenu] = useState(false);
+  const [active] = useState<boolean>(true);
+  const [cart_count, setcart_count] = useGlobalState("cart");
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
 
   return (
@@ -35,8 +36,21 @@ export default function Header() {
           </div>
 
           <div className="flex lg:gap-8 gap-2 items-center">
-            <div className="">
-              <img src={Cart} alt="cart" className="cursor-pointer" />
+            <div className="relative">
+              <img
+                src={Cart}
+                alt="cart"
+                className="cursor-pointer"
+                onClick={() => {
+                  setcart_count({
+                    ...cart_count,
+                    cartToggle: !cart_count.cartToggle,
+                  });
+                }}
+              />
+              <div className="absolute bg-orange-400 rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[0px]">
+                {cart_count.counter}
+              </div>
             </div>
             <div className="">
               <img

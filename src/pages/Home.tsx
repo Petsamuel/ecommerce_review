@@ -1,15 +1,12 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Button, CounterButton } from "../components/Button";
 import { Cart } from "../components/Cart";
 import Icon_cart from "../assets/icon-cart.svg";
 import { Product } from "../components/static/data";
+import { useGlobalState } from "../components/custom/hooks";
 
 export default function Home() {
-  const [value, setValue] = useState<number>(6);
-  const countVal = (e: any) => {
-    setValue(e);
-  };
-  console.log(value);
+  const [cartActive, setCartActive] = useGlobalState("cart");
 
   return (
     <Fragment>
@@ -55,18 +52,20 @@ export default function Home() {
               </p>
               <p className="">$250.00</p>
               <div className="mt-6 lg:flex gap-x-2 justify-center items-center">
-                <CounterButton
-                  countVal={() => {
-                    countVal;
-                  }}
-                />
+                <CounterButton />
                 <Button text="Add to Cart" icon={Icon_cart} />
               </div>
             </div>
           </div>
         </div>
-        <div className="absolute right-24 top-32">
-          <Cart active={false} counter={value} />
+        <div
+          className={
+            !cartActive.cartToggle
+              ? "absolute right-24 top-32"
+              : "hidden"
+          }
+        >
+          {cartActive.isEmpty ? "" : <Cart />}
         </div>
       </section>
     </Fragment>
