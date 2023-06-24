@@ -4,15 +4,16 @@ import deleteicon from "../assets/icon-delete.svg";
 import { Product } from "./static/data";
 import { useGlobalState } from "./custom/hooks";
 
-
 export const Cart = () => {
-  const [counter] = useGlobalState("cart");
-
+  const [counter, setcounter] = useGlobalState("cart");
 
   const Calculation = () => {
     const val = 125.0;
     const answer = val * counter.counter;
     return answer;
+  };
+  const delection = () => {
+    setcounter({ ...counter, isEmpty: true, counter: 0, cartToggle: false });
   };
   return (
     <Fragment>
@@ -23,7 +24,7 @@ export const Cart = () => {
           </p>
         </div>
         <div className="flex justify-center h-full items-center">
-          {counter.isEmpty ? (
+          {!counter.isEmpty ? (
             <p className="text-gray-400 text-sm">Your Cart is empty.</p>
           ) : (
             <div className="flex px-2 gap-4 flex-col my-4">
@@ -44,10 +45,11 @@ export const Cart = () => {
                 <img
                   src={deleteicon}
                   alt="delete_icon"
-                  className="h-auto w-3"
+                  className="h-auto w-3 cursor-pointer"
+                  onClick={delection}
                 />
               </div>
-              <Button text="Checkout" icon="" />
+              <Button text="Checkout" icon={false} />
             </div>
           )}
         </div>

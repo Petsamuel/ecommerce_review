@@ -5,15 +5,31 @@ import { useGlobalState } from "./custom/hooks";
 
 type Buttons = {
   text: string;
-  icon: string;
+  icon: boolean | any;
 };
 
 export const Button = ({ text, icon }: Buttons) => {
+  const [cartToggle, setcartToggle] = useGlobalState("cart");
+  const Toggle = () => {
+    setcartToggle({
+      ...cartToggle,
+      cartToggle: !cartToggle.cartToggle,
+    });
+  };
   return (
     <Fragment>
-      <button className="w-full bg-amber-600 py-3 m-2 rounded-xl justify-center flex items-center gap-4 text-white">
-        <img src={icon} className="color-white " /> {text}
-      </button>
+      {icon ? (
+        <button
+          className="w-full bg-amber-600 py-3 m-2 rounded-xl justify-center flex items-center gap-4 text-white"
+          onClick={Toggle}
+        >
+          <img src={icon} className="color-white " /> {text}
+        </button>
+      ) : (
+        <button className="w-full bg-amber-600 py-3 m-2 rounded-xl justify-center flex items-center gap-4 text-white">
+          <img className="color-white " /> {text}
+        </button>
+      )}
     </Fragment>
   );
 };
@@ -27,7 +43,6 @@ export const CounterButton = () => {
         setProductNum({
           ...productNum,
           counter: productNum.counter - 1,
-          cartToggle: false,
         });
         break;
       default:
@@ -42,8 +57,6 @@ export const CounterButton = () => {
         setProductNum({
           ...productNum,
           counter: productNum.counter + 1,
-          isEmpty: false,
-          cartToggle: false,
         });
         break;
       default:
