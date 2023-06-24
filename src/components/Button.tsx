@@ -1,14 +1,11 @@
 import { Fragment, useState } from "react";
 import icon_plus from "../assets/icon-plus.svg";
 import icon_minus from "../assets/icon-minus.svg";
+import { useGlobalState } from "./custom/hooks";
 
 type Buttons = {
   text: string;
   icon: string;
-};
-type Counter = {
-  // value: number;
-  countVal: (e: any) => void;
 };
 export const Button = ({ text, icon }: Buttons) => {
   return (
@@ -20,9 +17,8 @@ export const Button = ({ text, icon }: Buttons) => {
   );
 };
 
-export const CounterButton = ({ countVal }: Counter) => {
-  const [productNum, setProductNum] = useState(1);
-  countVal(productNum);
+export const CounterButton = () => {
+  const [productNum, setProductNum] = useGlobalState("cart");
 
   return (
     <Fragment>
@@ -32,16 +28,16 @@ export const CounterButton = ({ countVal }: Counter) => {
           alt="sub"
           className="cursor-pointer"
           onClick={() => {
-            productNum == 0 ? setProductNum(0) : setProductNum(productNum - 1);
+            setProductNum({ ...productNum, counter: productNum.counter - 1 });
           }}
         />
-        {productNum}
+        {productNum.counter}
         <img
           src={icon_plus}
           alt="add"
           className="cursor-pointer"
           onClick={() => {
-            productNum ? setProductNum(productNum + 1) : "";
+            setProductNum({ ...productNum, counter: productNum.counter + 1 });
           }}
         />
       </div>

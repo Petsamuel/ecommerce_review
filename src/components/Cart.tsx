@@ -2,17 +2,17 @@ import { Fragment } from "react";
 import { Button } from "./Button";
 import deleteicon from "../assets/icon-delete.svg";
 import { Product } from "./static/data";
-import 
+import { useGlobalState } from "./custom/hooks";
 
 type CartOption = {
-  counter: any;
   active: boolean;
 };
 
-export const Cart = ({ counter, active }: CartOption) => {
+export const Cart = ({ active }: CartOption) => {
+  const [counter] = useGlobalState("cart");
   const Calculation = () => {
     const val = 125.0;
-    const answer = val * counter;
+    const answer = val * counter.counter;
     return answer;
   };
   return (
@@ -38,7 +38,7 @@ export const Cart = ({ counter, active }: CartOption) => {
                 <div>
                   <p className="text-sm">Fall Limited Edition Sneaker</p>
                   <p>
-                    $125.00 x {counter}= ${Calculation()}.00
+                    $125.00 x {counter.counter}= ${Calculation()}.00
                     <span className="font-bold text-black"></span>
                   </p>
                 </div>
