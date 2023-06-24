@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Button } from "./Button";
 import deleteicon from "../assets/icon-delete.svg";
 import { Product } from "./static/data";
+import 
 
 type CartOption = {
   counter: any;
