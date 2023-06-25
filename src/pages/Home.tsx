@@ -60,16 +60,10 @@ export default function Home() {
         </div>
         <div
           className={
-            !cartActive.cartToggle ? "absolute right-24 top-32" : "hidden"
+            cartActive.cartToggle ? "absolute right-24 top-32" : "hidden"
           }
-          onClick={() => {
-            setCartActive({
-              ...cartActive,
-              cartToggle: !cartActive.cartToggle,
-            });
-          }}
         >
-          {!cartActive.isEmpty ? "" : <Cart />}
+          {cartActive.isEmpty ? "" : <Cart />}
         </div>
       </section>
     </Fragment>

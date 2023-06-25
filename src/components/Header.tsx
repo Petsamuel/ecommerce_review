@@ -44,12 +44,15 @@ export default function Header() {
                 onClick={() => {
                   setcart_count({
                     ...cart_count,
-                    cartToggle: !cart_count.cartToggle,
+                    cartToggle: !cart_count.isEmpty,
                   });
                 }}
               />
               <div className="absolute bg-orange-400 rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[0px]">
-                {!cart_count.cartToggle ? cart_count.counter : ""}
+                {cart_count.cartToggle &&
+                  (cart_count.cartToggle || cart_count.isEmpty
+                    ? cart_count.counter
+                    : "")}
               </div>
             </div>
             <div className="">

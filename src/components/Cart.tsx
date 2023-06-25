@@ -13,7 +13,7 @@ export const Cart = () => {
     return answer;
   };
   const delection = () => {
-    setcounter({ ...counter, isEmpty: true, counter: 0, cartToggle: false });
+    setcounter({ ...counter, isEmpty: false, counter: 0, cartToggle: false });
   };
   return (
     <Fragment>
@@ -24,7 +24,7 @@ export const Cart = () => {
           </p>
         </div>
         <div className="flex justify-center h-full items-center">
-          {!counter.isEmpty ? (
+          {counter.isEmpty ? (
             <p className="text-gray-400 text-sm">Your Cart is empty.</p>
           ) : (
             <div className="flex px-2 gap-4 flex-col my-4">

@@ -13,9 +13,11 @@ export const Button = ({ text, icon }: Buttons) => {
   const Toggle = () => {
     setcartToggle({
       ...cartToggle,
-      cartToggle: !cartToggle.cartToggle,
+      cartToggle: true,
+      isEmpty: !cartToggle.isEmpty,
     });
   };
+
   return (
     <Fragment>
       {icon ? (
@@ -57,6 +59,7 @@ export const CounterButton = () => {
         setProductNum({
           ...productNum,
           counter: productNum.counter + 1,
+          isEmpty: false,
         });
         break;
       default:
