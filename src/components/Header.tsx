@@ -7,6 +7,7 @@ import { useGlobalState } from "./custom/hooks";
 
 export default function Header() {
   const [active] = useState<boolean>(true);
+  const [activeMenu, setActiveMenu] = useState(false);
   const [cart_count, setcart_count] = useGlobalState("cart");
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -18,13 +19,26 @@ export default function Header() {
             {active ? (
               <img src={logo} alt="logo" className="mr-2" />
             ) : (
-              <img src={close} alt="logo" className="mr-2" />
+              <img
+                src={close}
+                alt="menu"
+                className="mr-2 relative z-50"
+                onClick={() => {
+                  setActiveMenu(!activeMenu);
+                }}
+              />
             )}
-            <ul className="bg-white h-screen w-[100%] lg:w-auto lg:h-auto lg:left-0 -left-8 top-0 absolute lg:relative lg:flex gap-5 ml-8  items-center">
-              <div></div>
-              {Menu.map((value: string | null, key: number | null) => (
+
+            <ul
+              className={
+                activeMenu
+                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
+                  : "hidden h-screen  lg:w-auto lg:h-auto lg:left-0  lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
+              }
+            >
+              {Menu.map((value: any, key: number) => (
                 <li
-                  className=" bg-white lg:my-auto z-20 lg:py-6 px-0 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400"
+                  className=" bg-white lg:my-auto z-20 lg:py-4 lg:px-6 px-10 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400 "
                   key={key}
                 >
                   <a href="#" className="">
@@ -44,15 +58,14 @@ export default function Header() {
                 onClick={() => {
                   setcart_count({
                     ...cart_count,
-                    cartToggle: !cart_count.isEmpty,
+                    cartToggle: !cart_count.cartToggle,
                   });
                 }}
               />
-              <div className="absolute bg-orange-400 rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[0px]">
-                {cart_count.cartToggle &&
-                  (cart_count.cartToggle || cart_count.isEmpty
-                    ? cart_count.counter
-                    : "")}
+              <div className="absolute bg-orange-400 rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[-8px]">
+                {cart_count.add && cart_count.counter != 0
+                  ? cart_count.counter
+                  : ""}
               </div>
             </div>
             <div className="">

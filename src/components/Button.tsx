@@ -13,8 +13,8 @@ export const Button = ({ text, icon }: Buttons) => {
   const Toggle = () => {
     setcartToggle({
       ...cartToggle,
-      cartToggle: true,
-      isEmpty: !cartToggle.isEmpty,
+      add: true,
+      isEmpty: false,
     });
   };
 
@@ -25,7 +25,9 @@ export const Button = ({ text, icon }: Buttons) => {
           className="w-full bg-amber-600 py-3 m-2 rounded-xl justify-center flex items-center gap-4 text-white"
           onClick={Toggle}
         >
-          <img src={icon} className="color-white " /> {text}
+          <img src={icon} className="color-white" />
+
+          {text}
         </button>
       ) : (
         <button className="w-full bg-amber-600 py-3 m-2 rounded-xl justify-center flex items-center gap-4 text-white">
@@ -59,7 +61,6 @@ export const CounterButton = () => {
         setProductNum({
           ...productNum,
           counter: productNum.counter + 1,
-          isEmpty: false,
         });
         break;
       default:

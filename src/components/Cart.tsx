@@ -13,7 +13,13 @@ export const Cart = () => {
     return answer;
   };
   const delection = () => {
-    setcounter({ ...counter, isEmpty: false, counter: 0, cartToggle: false });
+    setcounter({
+      ...counter,
+      isEmpty: false,
+      counter: 0,
+      cartToggle: false,
+      add: false,
+    });
   };
   return (
     <Fragment>

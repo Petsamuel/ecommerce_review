@@ -63,7 +63,7 @@ export default function Home() {
             cartActive.cartToggle ? "absolute right-24 top-32" : "hidden"
           }
         >
-          {cartActive.isEmpty ? "" : <Cart />}
+          <Cart />
         </div>
       </section>
     </Fragment>

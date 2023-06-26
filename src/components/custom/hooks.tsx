@@ -3,9 +3,10 @@ import { createGlobalState } from "react-hooks-global-state";
 const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
   cart: {
     isEmpty: true,
-    counter: 1,
+    counter: 0,
     cartToggle: false,
-    status:false
+    status: false,
+    add: false,
   },
 });
 
