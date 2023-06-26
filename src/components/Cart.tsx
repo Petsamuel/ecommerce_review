@@ -23,8 +23,8 @@ export const Cart = () => {
   };
   return (
     <Fragment>
-      <div className=" flex flex-col w-[20rem]  relative bg-white shadow-2xl text-gray-400">
-        <div className="border-b-[2px] ">
+      <div className=" flex flex-col lg:w-[20rem] bg-white shadow-2xl text-gray-400 mx-4 lg:mx-0 rounded-xl lg:rounded-none">
+        <div className="border-b-[2px]">
           <p className="font-semibold mx-4 text-sm py-2 mt-2 text-black">
             Cart
           </p>

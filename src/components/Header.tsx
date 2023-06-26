@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import logo from "../assets/logo.svg";
 import Cart from "../assets/icon-cart.svg";
+import iconMenu from "../assets/icon-menu.svg";
 import image from "../assets/image-avatar.png";
 import close from "../assets/icon-close.svg";
 import { useGlobalState } from "./custom/hooks";
@@ -16,26 +17,33 @@ export default function Header() {
       <header className="flex justify-around items-center pt-8 fixed w-full z-[50] bg-white">
         <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative pb-6">
           <div className="flex relative items-center ">
-            {active ? (
-              <img src={logo} alt="logo" className="mr-2" />
-            ) : (
+            <div className="flex gap-4 items-center">
               <img
-                src={close}
+                src={iconMenu}
                 alt="menu"
-                className="mr-2 relative z-50"
+                className="lg:hidden"
                 onClick={() => {
                   setActiveMenu(!activeMenu);
                 }}
               />
-            )}
+              <img src={logo} alt="logo" className="mr-2" />
+            </div>
 
             <ul
               className={
                 activeMenu
-                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
+                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 -top-10 lg:top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
                   : "hidden h-screen  lg:w-auto lg:h-auto lg:left-0  lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
               }
             >
+              <img
+                src={close}
+                alt="close-menu"
+                className="z-50 px-10 py-10"
+                onClick={() => {
+                  setActiveMenu(!activeMenu);
+                }}
+              />
               {Menu.map((value: any, key: number) => (
                 <li
                   className=" bg-white lg:my-auto z-20 lg:py-4 lg:px-6 px-10 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400 "

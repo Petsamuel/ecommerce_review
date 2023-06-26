@@ -72,7 +72,7 @@ export const CounterButton = () => {
 
   return (
     <Fragment>
-      <div className="bg-gray-200 flex justify-around items-center w-3/6 py-3 m-2 rounded-lg">
+      <div className="bg-gray-100 flex justify-around items-center lg:w-3/6 py-4 m-2 rounded-lg w-full">
         <img
           src={icon_minus}
           alt="sub"
