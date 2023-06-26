@@ -1,17 +1,20 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Button, CounterButton } from "../components/Button";
 import { Cart } from "../components/Cart";
 import Icon_cart from "../assets/icon-cart.svg";
 import { Product } from "../components/static/data";
 import { useGlobalState } from "../components/custom/hooks";
+import icon_next from "../assets/icon-next.svg";
+import icon_previous from "../assets/icon-previous.svg";
 
 export default function Home() {
-  const [cartActive, setCartActive] = useGlobalState("cart");
+  const [cartActive] = useGlobalState("cart");
+  const [active, setActive] = useState<any>(false);
 
   return (
     <Fragment>
-      <section className="relative flex justify-center  py-[6rem] lg:py-[10rem] gap-4  lg:gap-24 lg:flex-row flex-col  lg:mx-4">
-        <div className=" w-full lg:w-[30%]">
+      <section className="relative flex justify-center  py-[6rem] lg:py-[10rem] gap-4  lg:gap-24 lg:flex-row flex-col ">
+        <div className="relative w-full lg:w-[30%]">
           <img
             src={Product[0].image}
             alt="product"
@@ -24,8 +27,11 @@ export default function Home() {
                 <img
                   src={value.image}
                   alt="more-product"
-                  className="rounded-xl  cursor-pointer hover:border-amber-600 hover:bg-opacity-50"
+                  className="rounded-xl cursor-pointer hover:border-amber-600 hover:bg-opacity-50 hover:bg-white "
                   key={key}
+                  onClick={() => {
+                    setActive(value.image);
+                  }}
                 />
               );
             })}
@@ -47,7 +53,7 @@ export default function Home() {
               rerum, facilis unde illum porro.
             </p>
             <div className="mt-2 relative ">
-              <div className="font-bold text-2xl flex justify-between lg:flex-col items-center">
+              <div className="font-bold text-2xl flex justify-between lg:flex-col items-center lg:items-start">
                 $125.00{" "}
                 <span className="bg-red-300 text-amber-600 text-xs absolute rounded-md left-24 p-1 ">
                   {" "}
@@ -66,11 +72,56 @@ export default function Home() {
         <div
           className={
             cartActive.cartToggle
-              ? "absolute lg:right-40 top-32 w-full lg:w-auto"
+              ? "absolute lg:right-[8vw] top-32 lg:top-36 w-full lg:w-auto "
               : "hidden"
           }
         >
           <Cart />
+        </div>
+        <div
+          className={
+            active
+              ? "overlay absolute h-screen w-full bg-black top-0 z-50 bg-opacity-50 justify-center flex place-content-center items-center overflow-hidden "
+              : "hidden"
+          }
+        >
+          <div className=" relative w-[28%] items-center flex place-content-center flex-col">
+            <div className="relative">
+              <span className="absolute flex justify-between w-full items-center h-full">
+                <div className="bg-white rounded-full p-2 -ml-5">
+                  <img src={icon_previous} alt="next" className="p-2" />
+                </div>
+                <div className="bg-white rounded-full p-2 -mr-5">
+                  <img
+                    src={icon_next}
+                    alt="next"
+                    className="bg-white rounded-full p-2"
+                  />
+                </div>
+              </span>
+              <img
+                src={active}
+                alt="selected"
+                className="rounded-2xl  m-auto"
+              />
+            </div>
+
+            <div className="lg:grid grid-cols-4 lg:gap-3  py-6 hidden">
+              {Product.map((value, key) => {
+                return (
+                  <img
+                    src={value.image}
+                    alt="more-product"
+                    className="rounded-xl cursor-pointer hover:border-amber-600 hover:bg-opacity-50 hover:bg-white "
+                    key={key}
+                    onClick={() => {
+                      setActive(value.image);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </Fragment>

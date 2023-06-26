@@ -25,13 +25,15 @@ export const Cart = () => {
     <Fragment>
       <div className=" flex flex-col lg:w-[20rem] bg-white shadow-2xl text-gray-400 mx-4 lg:mx-0 rounded-xl lg:rounded-none">
         <div className="border-b-[2px]">
-          <p className="font-semibold mx-4 text-sm py-2 mt-2 text-black">
+          <p className="font-semibold mx-4 text-sm py-4 mt-4 text-black">
             Cart
           </p>
         </div>
         <div className="flex justify-center h-full items-center">
           {counter.isEmpty ? (
-            <p className="text-gray-400 text-sm">Your Cart is empty.</p>
+            <p className="text-gray-400 text-sm my-[6vh]">
+              Your Cart is empty.
+            </p>
           ) : (
             <div className="flex px-2 gap-4 flex-col my-4">
               <div className="flex gap-3 items-center">

@@ -14,8 +14,12 @@ export default function Header() {
 
   return (
     <Fragment>
-      <header className="flex justify-around items-center pt-8 fixed w-full z-[50] bg-white">
-        <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative pb-6">
+      <header
+        className={
+          "flex justify-around items-center pt-8 fixed w-full z-50 bg-white "
+        }
+      >
+        <nav className="flex justify-between items-center border-b-2 w-full mx-4 lg:mx-24 relative pb-6 ">
           <div className="flex relative items-center ">
             <div className="flex gap-4 items-center">
               <img
@@ -32,14 +36,14 @@ export default function Header() {
             <ul
               className={
                 activeMenu
-                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 -top-10 lg:top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
+                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 -top-12 lg:top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
                   : "hidden h-screen  lg:w-auto lg:h-auto lg:left-0  lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
               }
             >
               <img
                 src={close}
                 alt="close-menu"
-                className="z-50 px-10 py-10"
+                className="z-50 px-10 py-10 lg:hidden"
                 onClick={() => {
                   setActiveMenu(!activeMenu);
                 }}
@@ -85,6 +89,15 @@ export default function Header() {
             </div>
           </div>
         </nav>
+        <div
+          className={
+            activeMenu
+              ? "absolute bg-black bg-opacity-50 w-full h-[100em] z-20"
+              : ""
+          }
+        >
+          {" "}
+        </div>
       </header>
     </Fragment>
   );
