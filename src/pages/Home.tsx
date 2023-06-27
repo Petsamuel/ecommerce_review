@@ -10,6 +10,7 @@ export const Home = () => {
   const [imgIndex, setImgIndex] = useState<number>(0);
   const [controller, setController] = useState(0);
   const [product, setProduct] = useState<string>();
+  const [overlay, setOverlay] = useState(false);
 
   const Next = () => {
     if (controller < 4 || controller != 0) {
@@ -194,7 +195,7 @@ export const Home = () => {
         </div>
         <div
           className={
-            active
+            overlay
               ? "overlay absolute h-full w-full bg-black top-0 z-50 bg-opacity-80 justify-center flex place-content-center items-center overflow-hidden "
               : "hidden"
           }
@@ -204,7 +205,7 @@ export const Home = () => {
               <div
                 className="flex justify-end py-5 cursor-pointer "
                 onClick={() => {
-                  setActive(false);
+                  setOverlay(!overlay);
                 }}
               >
                 <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
