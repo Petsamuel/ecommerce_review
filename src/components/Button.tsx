@@ -1,8 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import icon_plus from "../assets/icon-plus.svg";
 import icon_minus from "../assets/icon-minus.svg";
 import { useGlobalState } from "./custom/hooks";
-import cart_icon from "../assets/icon-cart.svg";
 
 type Buttons = {
   text: string;

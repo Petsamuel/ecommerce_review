@@ -7,10 +7,8 @@ import close from "../assets/icon-close.svg";
 import { useGlobalState } from "./custom/hooks";
 
 export default function Header() {
-  const [active] = useState<boolean>(true);
   const [activeMenu, setActiveMenu] = useState(false);
   const [row, setRow] = useState<number>();
-
   const [cart_count, setcart_count] = useGlobalState("cart");
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
 
