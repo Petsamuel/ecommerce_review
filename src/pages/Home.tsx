@@ -28,15 +28,23 @@ export const Home = () => {
     switch (true) {
       case controller == 1:
         setProduct(Product[1].image);
+        setActive(Product[1].image);
+
         break;
       case controller == 2:
         setProduct(Product[2].image);
+        setActive(Product[2].image);
+
         break;
       case controller == 3:
         setProduct(Product[3].image);
+        setActive(Product[3].image);
+
         break;
       default:
         setProduct(Product[0].image);
+        setActive(Product[0].image);
+
         break;
     }
   }, [controller]);
@@ -153,11 +161,10 @@ export const Home = () => {
               Fall Limited Edition <br />
               Sneakers
             </h3>
-            <p className="text-gray-400 mt-6 ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur magni illum quam corporis commodi harum. Eum repellat
-              autem commodi atque qui numquam. Corrupti recusandae reprehenderit
-              rerum, facilis unde illum porro.
+            <p className="text-gray-400 mt-6 w-[24em]">
+              This low profile are your perfect casual wear companion, Featuring
+              a durable rubber outer sole. they'll withtand everything the
+              weather can offer
             </p>
             <div className="mt-2 relative ">
               <div className="font-bold text-2xl flex justify-between lg:flex-col items-center lg:items-start">
@@ -210,7 +217,7 @@ export const Home = () => {
               </div>
               <Controller />
               <img
-                src={product ? product : Product[0].image}
+                src={active || product}
                 alt="selected"
                 className="rounded-2xl  m-auto"
               />
