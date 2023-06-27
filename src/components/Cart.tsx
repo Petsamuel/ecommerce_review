@@ -30,7 +30,7 @@ export const Cart = () => {
           </p>
         </div>
         <div className="flex justify-center h-full items-center">
-          {counter.isEmpty ? (
+          {counter.isEmpty || counter.counter == 0 ? (
             <p className="text-gray-400 text-sm my-[6vh]">
               Your Cart is empty.
             </p>
@@ -57,7 +57,7 @@ export const Cart = () => {
                   onClick={delection}
                 />
               </div>
-              <Button text="Checkout" icon={false} />
+              <Button text="Checkout" Icon={false} />
             </div>
           )}
         </div>

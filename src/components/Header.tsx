@@ -9,6 +9,8 @@ import { useGlobalState } from "./custom/hooks";
 export default function Header() {
   const [active] = useState<boolean>(true);
   const [activeMenu, setActiveMenu] = useState(false);
+  const [row, setRow] = useState<number>();
+
   const [cart_count, setcart_count] = useGlobalState("cart");
   const Menu = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -50,11 +52,26 @@ export default function Header() {
               />
               {Menu.map((value: any, key: number) => (
                 <li
-                  className=" bg-white lg:my-auto z-20 lg:py-4 lg:px-6 px-10 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400 "
+                  className={
+                    " bg-white lg:my-auto z-20 lg:py-0 lg:px-6 px-10 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400"
+                  }
                   key={key}
                 >
-                  <a href="#" className="">
+                  <a
+                    href="#"
+                    className="relative"
+                    onClick={() => {
+                      setRow(key);
+                    }}
+                  >
                     {value}
+                    <div
+                      className={
+                        row == key
+                          ? " hidden w-[4em] h-[4px] bg-[#ff7d1b] absolute top-14 align-middle lg:flex justify-center items-center"
+                          : ""
+                      }
+                    ></div>
                   </a>
                 </li>
               ))}
@@ -73,8 +90,9 @@ export default function Header() {
                     cartToggle: !cart_count.cartToggle,
                   });
                 }}
+                style={{ fill: "#69707D" }}
               />
-              <div className="absolute bg-orange-400 rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[-8px]">
+              <div className="absolute bg-[#ff7d1b] rounded-2xl text-white px-[2px] text-sm top-[-10px] right-[-8px]">
                 {cart_count.add && cart_count.counter != 0
                   ? cart_count.counter
                   : ""}
@@ -89,6 +107,7 @@ export default function Header() {
             </div>
           </div>
         </nav>
+
         <div
           className={
             activeMenu
