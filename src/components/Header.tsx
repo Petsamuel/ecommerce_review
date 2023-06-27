@@ -38,14 +38,14 @@ export default function Header() {
             <ul
               className={
                 activeMenu
-                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 -top-12 lg:top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
+                  ? "bg-white h-screen w-[180%] lg:w-auto lg:h-auto lg:left-0 -left-4 -top-12 lg:top-0 absolute lg:relative lg:flex gap-5 lg:ml-8  items-center z-40 place-content-center justify-center"
                   : "hidden h-screen  lg:w-auto lg:h-auto lg:left-0  lg:relative lg:flex gap-5 lg:ml-8  items-center z-40"
               }
             >
               <img
                 src={close}
                 alt="close-menu"
-                className="z-50 px-10 py-10 lg:hidden"
+                className="z-50 px-5 py-10 lg:hidden"
                 onClick={() => {
                   setActiveMenu(!activeMenu);
                 }}
@@ -56,6 +56,9 @@ export default function Header() {
                     " bg-white lg:my-auto z-20 lg:py-0 lg:px-6 px-10 py-3 font-bold cursor-pointer text-sm lg:font-semi-bold lg:text-gray-400"
                   }
                   key={key}
+                  // onMouseEnter={() => {
+                  //   setRow(key);
+                  // }}
                 >
                   <a
                     href="#"

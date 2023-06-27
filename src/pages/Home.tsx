@@ -1,20 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Button, CounterButton } from "../components/Button";
 import { Cart } from "../components/Cart";
 import { Product } from "../components/static/data";
 import { useGlobalState } from "../components/custom/hooks";
-import icon_next from "../assets/icon-next.svg";
-import icon_previous from "../assets/icon-previous.svg";
 
 export const Home = () => {
   const [cartActive] = useGlobalState("cart");
   const [active, setActive] = useState<any>(false);
   const [imgIndex, setImgIndex] = useState<number>(0);
   const [controller, setController] = useState(0);
+  const [product, setProduct] = useState<string>();
 
   const Next = () => {
-    if (controller < 4 || controller == 0) {
+    if (controller < 4 || controller != 0) {
       setController(controller + 1);
+    }
+    if (controller == 4) {
+      setController(0);
     }
   };
   const Previous = () => {
@@ -22,6 +24,23 @@ export const Home = () => {
       setController(controller - 1);
     }
   };
+  useEffect(() => {
+    switch (true) {
+      case controller == 1:
+        setProduct(Product[1].image);
+        break;
+      case controller == 2:
+        setProduct(Product[2].image);
+        break;
+      case controller == 3:
+        setProduct(Product[3].image);
+        break;
+      default:
+        setProduct(Product[0].image);
+        break;
+    }
+  }, [controller]);
+  console.log(product);
   const ProductGrid = () => {
     return (
       <div className="lg:grid grid-cols-4 lg:gap-3  py-6 hidden">
@@ -63,16 +82,39 @@ export const Home = () => {
 
   const Controller = () => {
     return (
-      <span className="absolute flex justify-between w-full items-center h-full">
-        <div className="bg-white rounded-full p-2 lg:-ml-5" onClick={Next}>
-          <img src={icon_previous} alt="next" className="p-2 cursor-pointer" />
+      <span className="absolute flex justify-between w-full items-center h-[90%]">
+        <div
+          className="bg-white rounded-3xl p-2 lg:-ml-5 w-10 h-10 flex items-center justify-center cursor-pointer"
+          onClick={Previous}
+        >
+          <svg
+            width="12"
+            height="18"
+            xmlns="http://www.w3.org/2000/svg"
+            className=""
+          >
+            <path
+              d="M11 1 3 9l8 8"
+              stroke="#1D2026"
+              stroke-width="3"
+              fill="none"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
-        <div className="bg-white rounded-full p-2 lg:-mr-5" onClick={Previous}>
-          <img
-            src={icon_next}
-            alt="next"
-            className="bg-white rounded-full p-2 cursor-pointer"
-          />
+        <div
+          className="bg-white rounded-full p-2 lg:-mr-5 w-10 h-10 flex items-center justify-center cursor-pointer"
+          onClick={Next}
+        >
+          <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m2 1 8 8-8 8"
+              stroke="#1D2026"
+              stroke-width="3"
+              fill="none"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </span>
     );
@@ -85,17 +127,26 @@ export const Home = () => {
           <span className="lg:hidden">
             <Controller />
           </span>
-          <img
-            src={Product[0].image}
-            alt="product"
-            className=" lg:rounded-2xl "
-          />
+          <span className=" lg:flex hidden">
+            <img
+              src={Product[0].image}
+              alt="product"
+              className=" lg:rounded-2xl "
+            />
+          </span>
+          <span className="lg:hidden">
+            <img
+              src={product ? product : Product[0].image}
+              alt="product"
+              className=" lg:rounded-2xl "
+            />
+          </span>
 
           <ProductGrid />
         </div>
         <div className="lg:w-[30%] mx-4 ">
           <div className="lg:mt-6 mt-2">
-            <p className="uppercase font-semibold text-amber-600 leading-loose">
+            <p className="uppercase font-semibold text-[#ff7d1b] leading-loose">
               Sneaker Company
             </p>
             <h3 className="text-4xl font-bold leading-tight">
@@ -137,15 +188,29 @@ export const Home = () => {
         <div
           className={
             active
-              ? "overlay absolute h-full w-full bg-black top-0 z-50 bg-opacity-50 justify-center flex place-content-center items-center overflow-hidden "
+              ? "overlay absolute h-full w-full bg-black top-0 z-50 bg-opacity-80 justify-center flex place-content-center items-center overflow-hidden "
               : "hidden"
           }
         >
-          <div className=" relative w-[28%] items-center flex place-content-center flex-col">
+          <div className=" relative w-[28%] items-center flex place-content-center flex-col ">
             <div className="relative">
+              <div
+                className="flex justify-end py-5 cursor-pointer "
+                onClick={() => {
+                  setActive(false);
+                }}
+              >
+                <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                    fill="#ff7d1b"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
               <Controller />
               <img
-                src={controller ? active : active}
+                src={product ? product : Product[0].image}
                 alt="selected"
                 className="rounded-2xl  m-auto"
               />
