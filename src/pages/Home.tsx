@@ -133,8 +133,8 @@ export const Home = () => {
 
   return (
     <Fragment>
-      <section className="relative flex justify-center   py-[6rem]  lg:h-screen lg:py-[8rem] gap-4  lg:gap-24 lg:flex-row flex-col">
-        <div className="relative w-full lg:w-[30%] lg:pt-3">
+      <section className="relative flex justify-center   py-[3rem]  lg:h-screen lg:py-[8rem] gap-4  lg:gap-24 lg:flex-row flex-col">
+        <div className="relative w-full lg:w-[30%] lg:pt-2">
           <span className="lg:hidden">
             <Controller />
           </span>
@@ -197,7 +197,7 @@ export const Home = () => {
         </div>
         <div
           className={
-            !overlay
+            overlay
               ? "overlay absolute h-full w-full  bg-black top-0 z-50 bg-opacity-80 justify-center flex place-content-center items-center overflow-hidden "
               : "hidden"
           }
