@@ -133,8 +133,8 @@ export const Home = () => {
 
   return (
     <Fragment>
-      <section className="relative flex justify-center   py-[3rem]  lg:h-screen lg:py-[8rem] gap-4  lg:gap-24 lg:flex-row flex-col">
-        <div className="relative w-full lg:w-[30%] lg:pt-2">
+      <section className="relative flex justify-center  py-[3rem]  lg:h-screen lg:py-[7rem] gap-4  lg:gap-24 lg:flex-row flex-col">
+        <div className="relative w-full lg:w-[30%] ">
           <span className="lg:hidden">
             <Controller />
           </span>
@@ -172,7 +172,7 @@ export const Home = () => {
             <div className="mt-2 relative ">
               <div className="font-bold text-2xl flex justify-between lg:flex-col items-center lg:items-start">
                 $125.00{" "}
-                <span className="bg-red-300 text-amber-600 text-xs absolute rounded-md left-24 p-1 ">
+                <span className="bg-red-300 text-[#ff7d1b]  text-xs absolute rounded-md left-32 p-1 ">
                   {" "}
                   50%
                 </span>
