@@ -49,7 +49,7 @@ export const Home = () => {
         break;
     }
   }, [controller]);
-  console.log(product);
+
   const ProductGrid = () => {
     return (
       <div className="lg:grid grid-cols-4 lg:gap-3  py-6 hidden">
@@ -67,6 +67,7 @@ export const Home = () => {
                 key={key}
                 onMouseEnter={() => {
                   setImgIndex(key);
+                  // setOverlay(!overlay);
                 }}
               />
               <div
@@ -78,6 +79,7 @@ export const Home = () => {
                 onClick={() => {
                   setActive(value.image);
                   setImgIndex(key);
+                  setOverlay(!overlay);
                 }}
               >
                 {" "}
@@ -131,12 +133,12 @@ export const Home = () => {
 
   return (
     <Fragment>
-      <section className="relative flex justify-center  py-[6rem] lg:py-[8rem] gap-4  lg:gap-24 lg:flex-row flex-col ">
-        <div className="relative w-full lg:w-[30%]">
+      <section className="relative flex justify-center   py-[6rem]  lg:h-screen lg:py-[8rem] gap-4  lg:gap-24 lg:flex-row flex-col">
+        <div className="relative w-full lg:w-[30%] lg:pt-3">
           <span className="lg:hidden">
             <Controller />
           </span>
-          <span className=" lg:flex hidden">
+          <span className=" lg:flex hidden ">
             <img
               src={Product[0].image}
               alt="product"
@@ -153,7 +155,7 @@ export const Home = () => {
 
           <ProductGrid />
         </div>
-        <div className="lg:w-[30%] mx-4 ">
+        <div className="lg:w-[30%] mx-4 my-20">
           <div className="lg:mt-6 mt-2">
             <p className="uppercase font-semibold text-[#ff7d1b] leading-loose">
               Sneaker Company
@@ -195,8 +197,8 @@ export const Home = () => {
         </div>
         <div
           className={
-            overlay
-              ? "overlay absolute h-full w-full bg-black top-0 z-50 bg-opacity-80 justify-center flex place-content-center items-center overflow-hidden "
+            !overlay
+              ? "overlay absolute h-full w-full  bg-black top-0 z-50 bg-opacity-80 justify-center flex place-content-center items-center overflow-hidden "
               : "hidden"
           }
         >
