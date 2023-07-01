@@ -52,7 +52,7 @@ export const Home = () => {
 
   const ProductGrid = () => {
     return (
-      <div className="lg:grid grid-cols-4 lg:gap-3  py-6 hidden">
+      <div className="lg:grid grid-cols-4 lg:gap-6  py-6 hidden">
         {Product.map((value, key) => {
           return (
             <div className="relative">
