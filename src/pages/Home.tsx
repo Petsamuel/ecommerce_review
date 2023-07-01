@@ -172,11 +172,11 @@ export const Home = () => {
             <div className="mt-2 relative ">
               <div className="font-bold text-2xl flex justify-between lg:flex-col items-center lg:items-start">
                 $125.00{" "}
-                <span className="bg-red-300 text-[#ff7d1b]  text-xs absolute rounded-md left-32 p-1 ">
+                <span className="bg-red-50 text-[#ff7d1b]  text-xs absolute rounded-md left-24 p-1 ">
                   {" "}
                   50%
                 </span>
-                <p className="text-gray-400 text-sm">$250.00</p>
+                <p className="text-gray-400 text-sm line-through">$250.00</p>
               </div>
 
               <div className="mt-6 lg:flex gap-x-2 justify-center items-center ">
